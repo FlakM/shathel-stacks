@@ -1,0 +1,30 @@
+version: '3.4'
+
+
+services:
+ standalone:
+  image: minio/minio
+  command: server /data
+  volumes:
+   - data:/data
+   - config:/root/.minio
+  ports:
+   - "9000:9000"
+  networks:
+    - minionet   
+  environment:
+   MINIO_ACCESS_KEY: ${SHATHEL_ENV_MINIO_ACCESS_KEY}
+   MINIO_SECRET_KEY: ${SHATHEL_ENV_MINIO_SECRET_KEY}
+
+
+volumes:
+  data:
+    labels:
+      org.shathel.rexray: 'true'  
+  config:
+    labels:
+      org.shathel.rexray: 'true'
+
+
+networks:
+  minionet:
