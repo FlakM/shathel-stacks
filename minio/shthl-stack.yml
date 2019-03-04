@@ -15,5 +15,6 @@ shathel-stack:
       addConnectionUrl:
         target: DEPS
         inline: |
+          env['AWS_ENDPOINT_URL']='http://minio_standalone:9000'
           env['MINIO_STACK_HOST']='minio_standalone'
           env['MINIO_STACK_PORT']='9000'          
